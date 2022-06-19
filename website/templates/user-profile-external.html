@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='styles/login-style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='styles/user-profile-style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <div class="container bg-white my-2">
+        <div class="row mt-5 p-3 py-2">
+            <div class="d-flex text-user-profile mb-3">
+                <h4 class="text-right">User profile: {{ username }}</h4>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="row p-3 py-3">
+                <div class="row">
+                    <div class="col-md-4"><label class="labels">User ID</label><input type="text" class="form-control custom-form-control" placeholder="User ID" value="{{ user.id }}" disabled></div>
+                        <div class="col-md-8"><label class="labels">Username</label><input type="text" class="form-control custom-form-control" placeholder="Username" value="{{ user.username }}" disabled></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="labels">Email</label><input type="text" class="form-control custom-form-control" placeholder="Email" value="{{ user.email }}" disabled>                    
+                        </div>                     
+                        <div class="col-md-6">
+                            <label class="labels">Country</label><input type="text" class="form-control custom-form-control" placeholder="Country" value="{{ user.country }}" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Education</label><input type="text" class="form-control custom-form-control" placeholder="Education" value="{{ user.education }}" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Profession</label><input type="text" class="form-control custom-form-control" placeholder="Profession" value="{{ user.profession }}" disabled>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Additional details</label><input type="text" class="form-control custom-form-control" placeholder="Additional details" value="{{ user.additional_details }}" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='styles/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='styles/about-style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <div class="container-fluid px-5 mt-5">
+        <hr>
+        <div class="row px-5 mt-5">
+            <h4>ELMEDILAB</h4>
+            <h6>Medical image labeling software for machine learning</h6>
+        </div>
+        <br><hr><br>
+        <div class="row text-justify px-5 mt-4">
+            <div class="col-sm-4">
+                <h6>UPLOAD</h6>
+                <hr>
+                <p class="text-justify mt-3 text-sm-start fw-lighter fs-6">Upload files with the most common extensions, dicom files and video files, that will be included in specific annotation tasks.</p>
+            </div>
+            <div class="col-sm-4">
+                <h6>VIEW</h6>
+                <hr>
+                <p class="text-justify mt-3 text-sm-start fw-lighter fs-6">Annotate objects in neatly presented files and effortlessly control displayed files in an assigned task.</p>
+            </div>
+            <div class="col-sm-4">
+                <h6>ANNOTATE</h6>
+                <hr>
+                <p class="text-justify mt-3 text-sm-start fw-lighter fs-6">Label various files included in dedicated tasks thoroughly created by the administrator.</p>
+            </div>
+            <br><br>
+        </div>
+        <div class="row text-justify px-5 mt-4 mb-2">
+            <div class="col-sm-4">
+                <h6>EXPORT</h6>
+                <hr>
+                <p class="text-justify mt-3 text-sm-start fw-lighter fs-6">Easily export created annotations from dedicated administrator tab or through submitted labels view according to a chosen task or a file.</p>
+            </div>
+            <div class="col-sm-4">
+                <h6>CONVERT</h6>
+                <hr>
+                <p class="text-justify mt-3 text-sm-start fw-lighter fs-6">Straightforwardly convert uploaded labels to PASCAL VOC XML, COCO JSON or YOLO annotation format. </p>
+            </div>
+            <div class="col-sm-4">
+                <h6>CUSTOMIZE</h6>
+                <hr>
+                <p class="text-justify mt-3 text-sm-start fw-lighter fs-6">Comfortably modify your user profile information in case there is a need for change.</p>
+            </div>
+            <br><br>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-start px-5 py-5 mt-4">
+            <p class="fw-lighter fs-6 mb-3"><i>Agata Polejowska, Gdansk University of Technology</i></p>
+        </div>
+    </div>
+{% endblock %}

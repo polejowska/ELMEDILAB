@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 pb-5 mb-5">
+            {% for task in tasks %}
+                {% if task.status == 1 %}
+                    <a href="{{ url_for('user.task_files', username=current_user.username, task_id=task.id) }}">
+                        <div class="card card-task my-3 mx-5 p-3 rounded-0">
+                            <h5 class="card-title card-title-task">TASK #{{ task.id }}</h5>
+                            <p class="card-text">{{ task.name }}</p>
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="card card-task-inactive bg-body mt-3 mx-5 p-3">
+                        <h5 class="card-title card-title-task">TASK #{{ task.id }}</h5>
+                        <p class="card-text">{{ task.name }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

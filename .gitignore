@@ -1,0 +1,6 @@
+**/__pycache__/
+website/static/img/uploads
+website/LABEL
+website/annotations
+website/site.db
+input_labels_convert

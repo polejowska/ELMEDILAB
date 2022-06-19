@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<header>
+    {% include 'includes/_navbar-admin.html' %}
+</header>
+<main>
+    <div class="container-fluid p-3 mb-5">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="card card-task card-create-task mt-3 mx-5 p-3">
+                {{ form.create(class="card-title card-create-task card-title-task") }}
+            </div>
+        </form>
+        {% for task in tasks %}
+            {% if task.status == 0 %}
+            <div class="card card-task-inactive mt-3 mx-5 p-3">
+            {% else %}
+            <div class="card card-task bg-body mt-3 mx-5 p-3">
+            {% endif %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="card-title card-title-task">TASK #{{ task.id }}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ url_for('user.task_files', username=current_user.username, task_id=task.id) }}">
+                                <button type="button" class="btn btn-outline-dark btn-sm custom-control-button btn-cancel mx-2">
+                                    CHECK DETAILS
+                                </button>
+                            </a>
+                            <a href="{{ url_for('task.change_task_status', task_id=task.id, status=task.status) }}" style="color:black;">
+                                <button type="button" class="btn btn-outline-dark btn-sm custom-control-button btn-cancel mx-2">
+                                    {% if task.status == 0 %}
+                                        ACTIVATE
+                                    {% elif task.status == 1 %}
+                                        DEACTIVATE
+                                    {% else %}
+                                        UNDEFINED STATUS
+                                    {% endif %}
+                                </button>
+                            </a>
+                            <a href="{{ url_for('task.remove_task', task_id=task.id) }}" style="color:black;">
+                                <button type="button" class="btn btn-outline-dark btn-sm custom-control-button btn-cancel mx-2">
+                                    REMOVE
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <p class="card-text">{{ task.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

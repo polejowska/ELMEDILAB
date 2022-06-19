@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 pb-5 mb-5">
+            <a href="{{ url_for('user.tasks', username=current_user.username) }}">
+                <div class="card card-admin-panel bg-body mt-3 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Search tasks</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('user.profile', username=current_user.username) }}">
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">User profile</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('main.help') }}" >
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Help</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('main.about') }}" >
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">About</h5>
+                </div>
+            </a>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

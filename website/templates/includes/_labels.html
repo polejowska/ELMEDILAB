@@ -1,0 +1,204 @@
+<div id="main-labels" class="col-md-3 mt-4">
+    <hr>
+    <div class="config-group-flush mb-2">
+    {% for label in labels|reverse %}
+        {% if not label.name %}
+            <div class="row mb-3 mt-2 mx-1 px-2 custom-labels-header">
+                <div class="py-2">
+                    Label number created in this session: {{ label.nr }}
+                </div>
+            </div>
+            <form method="POST">
+                <div class="row mx-2 mt-1 p-2">
+                    <div class="form-check text-wrap text-break label-text mt-1">
+                        <input class="form-check-input rounded-0" type="radio" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }" name="flexRadioDefault" id="predefined-label-name-radiobutton">
+                        <label class="form-check-label mb-2" for="predefined-label-name-radiobutton">
+                            Use a predefined class for the object's name
+                        </label>
+                        <select id="predefined-label-name" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }" class="form-select form-select-sm label-text rounded-0" aria-label=".form-select-sm">
+                            {% for predefined_label in predefined_labels %}
+                                <option value="">{{ predefined_label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-check text-wrap text-break label-text mt-3">
+                        <input class="form-check-input rounded-0" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }" type="radio" name="flexRadioDefault" id="input-label-name-radiobutton" checked>
+                        <label class="form-check-label mb-2" for="input-label-name-radiobutton">
+                            Define the object's name
+                        </label>
+                        <input name="{{ label.nr }}" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }" type="text" class="input-label-name form-control form-control-sm label-text mt-1 rounded-0" placeholder="Name" aria-label=".form-control-sm" spellcheck="false" autofocus></input>
+                    </div>
+                </div>
+                <hr>
+                <div class="row m-2 mt-1 p-2 pt-1">
+                    <div class="form-check text-wrap text-break label-text">
+                        <label class="form-check-label mb-1" for="">Define the object's pose</label>
+                        <input name="{{ label.pose }}" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }" class="input-label-pose form-control form-control-sm label-text mt-1 rounded-0" type="text" placeholder="Unspecified" aria-label=".form-control-sm"></input>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mx-3 mt-1 px-3">
+                    <div class="form-check text-wrap text-break label-text">
+                        <input class="form-check-input rounded-0" type="checkbox" value="0" id="truncated" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }">
+                        <label class="form-check-label" for="truncated">Truncated</label>
+                    </div>
+                    <div class="form-check text-wrap text-break label-text">
+                        <input class="form-check-input rounded-0" type="checkbox" value="0" id="difficult" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }">
+                        <label class="form-check-label"for="difficult">Difficult</label>
+                    </div>
+                    <div class="form-check text-wrap text-break label-text">
+                        <input class="form-check-input rounded-0" type="checkbox" value="0" id="occluded" onkeydown="if (event.keyCode == 13) { label('{{ label.nr|safe }}'); }">
+                        <label class="form-check-label"for="occluded">Occluded</label>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3 mx-1">
+                        <button type="button" class="btn btn-sm btn-dark text-center custom-labels-header rounded-0 px-3" onclick="label('{{ label.nr|safe }}');">
+                            SAVE TO A SESSION
+                        </button>
+                </div>
+            </form>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="row mt-2">
+            {% if labels and labels|length >= 1 %}
+            <hr>
+                <p><small>Annotations created in this session</small></p>
+                <ul class="list-group-flush px-0">
+                {% for label in labels|reverse %}
+                    {% if label.name %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                        <div class="col-md-4 text-wrap text-break label-text">
+                            <div class="input-group">
+                                {{ label.nr }}
+                                {{ label.name }}
+                            </div>
+                        </div>
+                        <div>
+                            <button id="{{ label.nr }}" type="button" class="btn btn-outline-dark btn-sm custom-list-button" 
+                            onclick="window.location.replace('/user-' + username + '/task-' + task_id + '/file-' + file_id + '/remove-from-session/' + this.id)">
+                                REMOVE
+                            </button>
+                        </div>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {% if labels and labels|length >= 1 %}
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center custom-labels-header mx-2">
+                    <a href="{{ url_for('labeling.submit_labels', username=current_user.username, task_id=task_id, file_id=file_id) }}">
+                        <button type="button" class="btn btn-sm btn-dark btn-label-submit text-center rounded-0 px-5 mx-1" style="background-color: black;" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Send session annotations to the database">
+                            <small>SUBMIT ANNOTATIONS</small>
+                        </button>
+                    </a>
+                </div>
+                <hr>
+            </div>
+        {% endif %}
+        <div>
+            {% if annotations %}
+                <p><small>Annotations saved to the database</small></p>
+                <ul class="list-group-flush px-0">
+            {% for annotation in annotations|reverse %}
+                {% if annotation.name %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                        <div class="col-md-4 text-wrap text-break label-text">
+                            <a href="{{ url_for('labeling.annotation_information', annotation_id=annotation.id) }}" target="_blank" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Click to see information about this annotation">
+                                <div class="input-group text-dark annotation-info">
+                                    {{ annotation.id }}
+                                    {% if annotation.name %}
+                                        {{ annotation.name }}
+                                    {% endif %} 
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{ url_for('user.display_user_profile', username=annotation.creator) }}" target="_blank">
+                                <button class="btn btn-outline-dark btn-sm custom-list-button" data-bs-placement="left" title="View the creator profile">
+                                    {{ annotation.creator }}
+                                </button>
+                            </a>
+                        </div>
+                        <div>
+                            <button id="{{ annotation.id }}" type="button" class="btn btn-outline-dark btn-sm custom-list-button" data-bs-placement="left" title="Show or hide annotation on canvas"
+                            onclick="showHideOneLabel('{{ annotation.id|safe }}', '{{ annotation.x_min|safe }}', '{{ annotation.x_max|safe }}', '{{ annotation.y_min|safe }}', '{{ annotation.y_max|safe }}' )">
+                                SHOW
+                            </button>
+                        </div>
+                        |
+                        <div>
+                            <button id="{{ annotation.id }}" type="button" class="btn btn-outline-dark btn-sm custom-list-button" data-bs-placement="left" title="Remove this annotation from the database"
+                            onclick="window.location.replace('/user-' + username + '/task-' + task_id + '/file-' + file_id + '/remove-from-db/' + this.id)">
+                                REMOVE
+                            </button>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        function getInputNameValue() {
+            var inputNameValue = '';
+            
+            if (document.getElementById('predefined-label-name-radiobutton').checked) {
+                var selectNameOptions = document.getElementById("predefined-label-name")
+                inputNameValue = selectNameOptions.options[selectNameOptions.selectedIndex].text;
+            }
+            if (document.getElementById('input-label-name-radiobutton').checked) {
+                inputNameValue  = document.getElementsByClassName("input-label-name")[0].value;
+            }
+
+            return inputNameValue;
+        }
+
+        function getPoseValue() {
+            var inputPoseValue = document.getElementsByClassName("input-label-pose")[0].value;
+            return inputPoseValue;
+        }
+
+        function checkCheckbox(id) {
+            if (document.getElementById(id).checked) {
+                return '1';
+            } 
+            else {
+                return '0';
+            }
+        }
+
+        var label = function(nr, name=getInputNameValue(), 
+                            pose=getPoseValue(), 
+                            occluded=checkCheckbox('occluded'),
+                            difficult=checkCheckbox('difficult'), 
+                            truncated=checkCheckbox('truncated')) {
+            window.location.replace(
+                "/user-" + username +
+                "/task-" + task_id +
+                "/file-" + file_id +
+                "/label/open/" + nr +
+                "?name=" + name +
+                "&pose=" + pose +
+                "&difficult=" + difficult +
+                "&occluded=" + occluded +
+                "&truncated=" + truncated
+                );
+        }
+
+        function showHideOneLabel(annotation_id, xMin, xMax, yMin, yMax) {
+            console.log("Show:", xMin, xMax, yMin, yMax);
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 1;
+            ctx.rect(xMin, yMin, xMax - xMin, yMax - yMin);
+            ctx.stroke();
+
+            if (document.getElementById(annotation_id).innerText == 'SHOW') {
+                document.getElementById(annotation_id).disabled = true;
+            }
+        }
+    </script>
+</div>

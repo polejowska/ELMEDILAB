@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 py-1 px-4 pb-5 mb-5">
+            <div class="card card-task card-create-task mt-3 mx-3 px-3 pt-3">
+                <h5 class="card-title card-title-task pb-2">TASK #{{ task_id }}</h5>
+            </div>
+            {% for file in files %}
+                {% if file.status == 0 %}
+                    <a href="{{ url_for('labeling.task_label', username=current_user.username, task_id=task_id, file_id=file.id, mode='closed') }}">
+                        <div class="card card-task mt-3 mx-3 px-3 pt-3 rounded-0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>FILE #{{ file.id }}</h5>
+                                    <p>{{ file.name }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="mx-3 px-2 border border-dark"><small>{{ upload_annotations_num[file.name]}} ANNOTATIONS</small></div>
+                                        <div class="mx-3 px-2 border border-success"><small>NEW</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+            {% for file in files %}
+                {% if file.status == 2 %}
+                    <a href="{{ url_for('labeling.task_label', username=current_user.username, task_id=task_id, file_id=file.id, mode='closed') }}"> 
+                        <div class="card card-task mt-3 mx-3 px-3 pt-3 rounded-0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>FILE #{{ file.id }}</h5>
+                                    <p>{{ file.name }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="mx-3 px-2 border border-dark"><small>{{ upload_annotations_num[file.name]}} ANNOTATIONS</small></div>
+                                        <div class="mx-3 px-2 border border-warning"><small>ANNOTATED</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+            {% for file in files %}
+                {% if file.status == 1 %}
+                        <div class="card card-task-inactive mt-3 mx-3 px-3 pt-3 rounded-0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>FILE #{{ file.id }}</h5>
+                                    <p>{{ file.name }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="mx-3 px-2 border border-dark"><small>{{ upload_annotations_num[file.name]}} ANNOTATIONS</small></div>
+                                        <div class="mx-3 px-2 border border-primary"><small>IN PROGRESS</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+            {% for file in files %}
+                {% if file.status == 3 %}
+                        <div class="card card-task-inactive mt-3 mx-3 px-3 pt-3 rounded-0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>FILE #{{ file.id }}</h5>
+                                    <p>{{ file.name }}</p>
+                                </div>
+                                <div class="col-md-6 justify-content-end">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="mx-3 px-2 border border-dark"><small>{{ upload_annotations_num[file.name]}} ANNOTATIONS</small></div>
+                                        <div class="mx-3 px-2 border bg-dark" style="color:white"><small>CLOSED</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                {% endif %}
+            {% endfor %}
+            <div class="card card-task card-create-task mt-3 mx-3 px-3 pt-3">
+                <br>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

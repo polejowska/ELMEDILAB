@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='styles/about-style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <div class="container-fluid px-5 my-5">
+        <div class="row px-5">
+            <div class="border p-4 mb-3">
+            <h6>Starting annotating</h6>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                In order to start the labeling process, the user has to navigate to "Search tasks" from the User panel interface.
+                A list of prepared tasks shows up. Launching a given task, then selecting a file with status "NEW" or "ANNOTATED" enables the user to start creating annotations.
+            </p>
+        </div>
+        <div class="border p-4 mb-2 ">
+            <h6>Created tasks</h6>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                A new task can be created by the administrator. Each task is named appropriately and has a unique ID.
+                The dataset consisting of uploaded files is included in a created task and each uploaded file is ready to be annotated if the established status is "NEW" or "ANNOTATED".
+                Default labels which represent possible categories or class labels of the objects, that are expected to be detected in a given task,
+                are also carefully specified by the administrator.
+            </p>
+        </div>
+        <div class="border p-4 mb-2">
+            <h6>Canvas and navigation</h6>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Each file included in the task's dataset can be viewed in the canvas panel. The number of files included in a task, index and the filename of currently displayed file can be seen in a navigation section above the canvas panel. 
+                The navigation section also includes "FINISH LABELING THIS FILE" button.
+            </p>
+        </div>
+        <div class="border p-4 mb-2">
+            <h6>Tools panel</h6>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Zoom and drag enable button is designated for enabling zooming and dragging mode. During this mode the loaded image can be dragged,
+                zoomed in, zoomed out. The zoom and drag enable mode is indicated by the move cursor when hovered over the canvas panel.
+            </p>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Bbox button - when clicked enables to create a bounding box on a loaded image. Inside the Bbox section, color and line width of
+                the bounding box can be selected from the possible options.
+            </p>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Display (or hide) coordinates button when clicked shows or hides the cursor coordinates.
+            </p>
+        </div>
+        <div class="border p-4 x-5mb-2">
+            <h6>Labels panel</h6>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                An annotation specification form shows up when a bounding box is created on the currently loaded image.
+                In order to save the label to a session, user has to specify the name of the label by choosing one of the predefined label names or entering a
+                new label name in the dedicated input field. Optionally, user can define the detected object's pose or decide whether the object is truncated
+                or difficult to annotate by checking the displayed checkboxes.
+            </p>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Saving annotation, with the required data specified, to a session is possible by pressing enter when a cursor is focused on one of the fields included
+                in the annotation specification form section placed in the labels panel.
+                When the annotation is saved to a session successfully, it can be viewed in the "Annotations saved in the session" section in the labels panel.
+            </p>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Annotation saved in the session section included in the labels panel shows a list of already properly defined labels that are valid and ready
+                to be submitted. The user has the possiblity to remove the annotation from the session by clicking the remove button placed on the right side of
+                each annotation in the list.
+            </p>
+            <p class="mt-3 text-sm-start fw-lighter fs-6">
+                Saving annotation to the database enables the administrator to have the access to every submitted annotation.
+                In order to store the annotation in a database, a user has to click the designated button for submitting to the database.
+                When submitted correctly, all the labels saved in the session are entered into the database. Annotations created for a given file that are saved in
+                the database can be viewed by the user in the "Annotation saved to the database" section placed in the labels panel. Each annotation saved in
+                the database for a given file can be removed by the user through clicking the remove button placed on the right side of the annotation.
+                In "Annotation saved in the database" section each label included in the list has a tag representing the annotation creator. The tag is clickable
+                and when clicked redirects the user to the creator user profile. By clicking the ID or name of the annotation, the user can access detailed information
+                about the annotation that has been saved to the database.
+            </p>
+        </div>
+    </div>
+{% endblock %}

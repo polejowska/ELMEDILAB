@@ -1,0 +1,76 @@
+* 
+{
+    box-sizing: border-box;
+}
+
+body 
+{
+    background-color: white;
+}
+
+section 
+{
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(255, 255, 255) 0px 1px 5px;
+}
+
+a 
+{
+    text-decoration: none;
+}
+
+img 
+{
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
+
+.brand-heading
+{
+    letter-spacing: 7px;
+}
+
+.description-text
+{
+    letter-spacing: 2px;
+    color: black;
+    margin-bottom: 70px;
+    letter-spacing: 2px;
+}
+
+.login-button 
+{
+    background-color: black;
+    color: white;
+    height: 44px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.login-button:hover 
+{
+    background-color: white;
+    color: black;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.custom-form-control
+{
+    color:black;
+    border-radius: 0px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.custom-form-control:active, .custom-form-control:focus
+{
+    color: black;
+    outline: none;
+}
+
+.custom-alert
+{
+    border-radius: 0%;
+}

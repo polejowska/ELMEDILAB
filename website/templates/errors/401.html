@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='styles/about-style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+<header>
+    {% include 'includes/_navbar-user.html' %}
+</header>
+<div class="container">
+    <div class="mt-5 p-5 border border-warning">
+        <h5>[401 Unauthorized] Not authorized.</h5>
+        <p>The access to that page has been denied because insufficent permissions granted.</p>
+    </div>
+</div>
+{% endblock %}

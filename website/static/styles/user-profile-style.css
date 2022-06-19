@@ -1,0 +1,56 @@
+body 
+{
+    background-color: rgb(255, 255, 255)
+}
+
+.text-user-profile
+{
+    letter-spacing: 3px;
+}
+
+.form-control:focus 
+{
+    box-shadow: none;
+    border-color: #000000
+}
+
+.custom-form-control
+{
+    color: black;
+    border-radius: 0px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.custom-form-control:active, .custom-form-control:focus 
+{
+    color: black;
+    border-radius: 0px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.profile-button 
+{
+    background-color: black;
+    color: white;
+    height: 44px;
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    outline: none;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.profile-button:hover, .profile-button:focus, .profile-button:active
+{
+    background-color: white;
+    color: black;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.labels 
+{
+    font-size: 10px
+}

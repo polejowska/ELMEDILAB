@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 mb-5">
+            <div class="card card-task card-create-task mt-3 mx-4 p-1">
+                <div class="row m-2 px-1">
+                    <div class="col">
+                        <p class="text-left card-text font-weight-light">EXPORT ALL ANNOTATIONS FROM TASK #{{ task_id }}</p>
+                    </div>
+                    <div class="col">             
+                        <div class="d-flex justify-content-end">
+                            <p class="text-right card-text font-weight-light">NUMBER OF SUBMITTED LABELS: {{ labels_len }}</p>
+                        </div>
+                    </div>
+                </div>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="d-flex justify-content-center my-2 px-4">
+                        <div class="px-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click to download annotations in PASCAL VOC FORMAT">
+                            {{ form.export_pascal_voc(class="btn rounded-0 btn-download px-4") }}
+                        </div>
+                        <div class="px-3 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click to download annotations in COCO JSON FORMAT">
+                            {{ form.export_coco(class="btn rounded-0 btn-download px-4") }}
+                        </div>
+                        <div class="px-3 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click to download annotations in YOLO FORMAT"">
+                            {{ form.export_yolo(class="btn rounded-0 btn-download px-4") }}
+                        </div>
+                    </div>
+                </form>
+            </div>  
+            <div class="table-responsive mt-3 mx-4 p-3">
+                <table class="table table-sm table-borderless table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"><small>ID</small></th>
+                            <th scope="col"><small>CREATOR</small></th>
+                            <th scope="col"><small>FILENAME</small></th>
+                            <th scope="col"><small>LABEL</small></th>
+                            <th scope="col"><small>X_MIN</small></th>
+                            <th scope="col"><small>Y_MIN</small></th>
+                            <th scope="col"><small>X_MAX</small></th>
+                            <th scope="col"><small>Y_MAX</small></th>
+                            <th scope="col"><small></small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for annotation in annotations %}
+                            <tr>
+                                <th scope="row"><small>{{ annotation.id }}</small></th>
+                                <td>
+                                    <button class="btn btn-outline-light btn-sm rounded-0">
+                                        <a href="{{ url_for('export_convert.task_creator_submitted_labels', task_id=task_id, creator=annotation.creator) }}">
+                                            <small>{{ annotation.creator }}</small>
+                                        </a>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline-light btn-sm rounded-0">
+                                        <a href="{{ url_for('export_convert.task_filename_submitted_labels', task_id=task_id, filename=annotation.filename) }}">
+                                            <small>{{ annotation.filename }}</small>
+                                        </a>
+                                    </button>
+                                </td>
+                                <td><small>{{ annotation.name }}</small></td>
+                                <td><small>{{ annotation.x_min }}</small></td>
+                                <td><small>{{ annotation.y_min }}</small></td>
+                                <td><small>{{ annotation.x_max }}</small></td>
+                                <td><small>{{ annotation.y_max }}</small></td>
+                                <td>
+                                    <a href="{{ url_for('export_convert.export_label', task_id=task_id, annotation_id=annotation.id) }}">
+                                        <button class="btn btn-outline-dark btn-sm custom-control-button mx-4">EXPORT</button>
+                                    </a>
+                                    <a href="{{ url_for('export_convert.remove_label', task_id=task_id, annotation_id=annotation.id) }}">
+                                        <button class="btn btn-outline-dark btn-sm custom-control-button btn-deny">REMOVE</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

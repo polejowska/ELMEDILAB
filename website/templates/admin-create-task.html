@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 mb-5">
+            <div class="card card-task bg-body mt-3 mx-5 p-3">
+                <div class="d-flex justify-content-end">
+                    <a href="{{ url_for('task.cancel_task', id=id) }}">
+                        <button type="button" class="btn btn-outline-dark btn-sm custom-control-button btn-cancel mx-2">CANCEL</button>
+                    </a>
+                </div>
+                <h5 class="card-title card-title-task px-2 mb-3">TASK #{{ id }}</h5>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }} 
+                    <div class="col-md-12 mt-4 px-2">
+                        {{ form.name(class="form-control form-control-sm custom-form-control my-2 p-2 rounded-0") }}
+                    </div>
+                    <div class="row mb-5 mt-5 px-2">
+                        <div class="col-md-4">
+                            <input type="file" class="form-control form-control-sm rounded-0" name="files[]" multiple="true" autocomplete="off">     
+                        </div>
+                        <div class="col-md-4">
+                            {{ form.select_camera(class="form-select form-select-sm rounded-0") }}
+                            {{ form.select_camera.label(class="form-label-custom px-1") }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ form.select_frames(class="form-control form-control-sm rounded-0") }}
+                            {{ form.select_frames.label(class="form-label-custom px-1") }}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="d-flex justify-content-end mr-2">
+                                {{ form.upload(class="btn btn-dark btn-outline-light btn-upload rounded-0 px-5 py-1") }}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-12 mt-4 px-2">
+                        <p class="text-sm-start fw-light px-1">Uploaded files:</p>
+                        <ol class="list-group list-group-flush list-group-numbered">
+                            {% for upload in uploads %}
+                                <li class="list-group-item list-group-item d-flex justify-content-between align-items-center py-0">
+                                    <p class="text-sm-start fw-lighter fs-6"><small>{{ upload }}</small></p>
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    <hr>
+                    <div class="col-md-12 mt-5 px-2">
+                        <div class="row mt-4">
+                            <div class="col-md-8">
+                                {{ form.default_label(class="form-control form-control-sm custom-form-control my-2 px-2 rounded-0") }}
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-flex justify-content-end mr-2">
+                                    {{ form.add(class="btn btn-dark btn-outline-light btn-upload px-5 py-1 rounded-0") }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <ul class="list-group list-group-sm list-group-flush mt-3">
+                                    {% for default_label in default_labels %}
+                                        <li class="list-group-item text-sm rounded-0 py-0 my-0">
+                                            <p class="text-sm-start fw-lighter fs-6 py-0"><small>{{ default_label }}</small></p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        {{ form.create(class="btn btn-create mt-5 mb-3 px-5 py-1") }}
+                    </div>
+                    <hr>
+                    {% include 'includes/_messages.html' %}
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

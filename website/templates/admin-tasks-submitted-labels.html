@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 mb-5">
+            {% for task in tasks %}
+                <div class="card card-task bg-body mt-3 mx-5 p-3">
+                    <a href="{{ url_for('export_convert.task_submitted_labels', task_id=task.id) }}" style="color:black;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="card-title card-title-task">TASK #{{ task.id }}</h5>
+                            </div>
+                            <div class="col-md-6">        
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-outline-light border border-dark btn-sm custom-control-button btn-cancel mx-2">
+                                        CHECK SUBMITTED LABELS
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="card-text">{{ task.name }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

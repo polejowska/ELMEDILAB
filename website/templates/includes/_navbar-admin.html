@@ -1,0 +1,34 @@
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4 toggle-brand custom-nav-text">
+        <h5 class="text-white h5">Medical image labeling software for machine learning</h5>
+        <span><a href="{{ url_for('main.about') }}" class="text-muted">About</a></span>
+    </div>
+</div>
+<nav class="navbar sticky-top navbar-dark bg-dark" id="main-navbar">
+    <div class="container-fluid">
+        <a href="{{ url_for('admin.admin_main') }}">
+            <h5 class="text-white brand-heading h5">ELMEDILAB</h5>       
+        </a>
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-sm help-btn mr-0" type="button">
+                <span class="text-muted"><a href="{{ url_for('main.help') }}" class="custom-nav-text">Help</a></span>
+            </button>
+            <button class="btn btn-secondary dropdown-toggle btn-sm user-btn" type="button" data-bs-toggle="dropdown">
+                <a href="#"><span class="custom-nav-text">admin</span></a>
+            </button>
+            <ul class="dropdown-menu custom-dropdown">
+                <li><a class="dropdown-item" href="{{ url_for('admin.admin_main') }}">ADMIN PANEL</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('user.user_main', username=current_user.username) }}">USER PANEL</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="{{ url_for('task.manage_tasks') }}">MANAGE TASKS</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('admin.approve_requests') }}">REQUESTS APPROVAL</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('admin.users') }}">USERS</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('export_convert.tasks_submitted_labels') }}">SUBMITTED LABELS</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('export_convert.export_labels') }}">EXPORT LABELS</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('export_convert.convert_labels') }}">CONVERT LABELS FORMAT</a></li>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">LOG OUT</a>
+            </ul>
+        </div>
+    </div>
+</nav>

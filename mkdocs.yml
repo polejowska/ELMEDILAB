@@ -1,0 +1,58 @@
+site_name: ELMEDILAB
+repo_name: 'ELMEDILAB'
+site_author: 'Agata Polejowska'
+
+
+theme:
+    name: material
+    custom_dir: docs_assets/theme/
+    palette:
+        scheme: preference
+        primary: black
+        accent: black
+    icon: docs_assets\images\favicon.ico
+    favicon: docs_assets\images\favicon.ico
+    language: 'en'
+
+
+plugins:
+    - search
+    - minify:
+        minify_html: true
+
+
+markdown_extensions:
+    - codehilite
+    - markdown.extensions.admonition
+    - markdown.extensions.attr_list
+    - markdown.extensions.codehilite:
+        guess_lang: true
+    - markdown.extensions.def_list
+    - markdown.extensions.footnotes
+    - markdown.extensions.meta
+    - markdown.extensions.toc:
+        permalink: true
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.inlinehilite
+    - pymdownx.keys
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.snippets:
+        check_paths: true
+    - pymdownx.tabbed
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tilde
+
+use_directory_urls: false
+
+extra_javascript:
+    - https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js
+    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

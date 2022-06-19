@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div class="container-fluid p-3 pb-5 mb-5">
+            <a href="{{ url_for('task.manage_tasks') }}">
+                <div class="card card-admin-panel bg-body mt-3 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Manage tasks</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('admin.approve_requests') }}">
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Requests approval</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('admin.users') }}">
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Users</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('export_convert.tasks_submitted_labels') }}">
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Submitted labels</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('export_convert.export_labels') }}">
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Export labels</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('export_convert.convert_labels') }}">
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Convert annotations format</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('main.help') }}" >
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">Help</h5>
+                </div>
+            </a>
+            <a href="{{ url_for('main.about') }}" >
+                <div class="card card-admin-panel bg-body mt-4 mx-5 p-3">
+                    <h5 class="card-title card-title-admin-panel">About</h5>
+                </div>
+            </a>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

@@ -1,0 +1,143 @@
+sources_dir: docs
+templates_dir: docs/templates
+
+pages:
+  - page: "admin/routes.md"
+    source: "website/admin/routes.py"
+    functions:
+      - admin_main
+      - approve_requests
+      - add_user
+      - users
+      - remove_request
+      - remove_user
+  - page: "admin/utils.md"
+    source: "website/admin/utils.py"
+    functions:
+      - admin_access_required
+      - add_new_user
+      - remove_existing_user
+      - remove_new_request
+      - configure_db_records
+
+  - page: "auth/routes.md"
+    source: "website/auth/routes.py"
+    functions:
+      - new_user_form
+      - index
+      - logout
+
+  - page: "export_convert/routes.md"
+    source: "website/export_convert/routes.py"
+    functions:
+      - task_submitted_labels
+      - export_json_file
+      - export_label
+      - export_labels
+      - export
+      - remove_label
+      - task_submitted_labels
+      - task_filename_submitted_labels
+      - task_creator_submitted_labels
+      - convert_labels
+  - page: "export_convert/utils.md"
+    source: "website/export_convert/utils.py"
+    functions:
+      - check_extension
+      - write_annotations
+      - export_annotations
+      - create_zip_archive
+      - create_directory
+      - clean_directory
+      - convert_prepare_uploaded_labels
+      - convert_uploaded_labels
+      - get_categories
+      - get_tree_element
+      - get_filename
+      - convert_xml_to_json
+      - convert_json_to_yolo
+      - convert_xml_to_yolo
+      - convert_yolo_to_xml
+
+  - page: "labeling/routes.md"
+    source: "website/labeling/routes.py"
+    functions:
+      - task_label
+      - finish_file_label
+      - images
+      - submit_labels
+      - add_label
+      - label_file
+      - remove_from_session
+      - remove_from_db
+      - annotation_information
+  - page: "labeling/utils.md"
+    source: "website/labeling/utils.py"
+    functions:
+      - save_label
+      - remove_label
+      - get_saved_labels
+
+  - page: "main/routes.md"
+    source: "website/main/routes.py"
+    functions:
+      - base
+      - help
+      - about
+
+  - page: "seq_processing/A320.md"
+    source: "website/seq_processing/A320G.py"
+    functions:
+      - convert_to_numpy
+      - save_image
+      - generate_img_from_seq_A320G
+  - page: "seq_processing/A655SC.md"
+    source: "website/seq_processing/A655SC.py"
+    functions:
+      - get_int
+      - get_img_A655SC
+      - generate_img_from_seq_A655SC
+  - page: "seq_processing/SC3000.md"
+    source: "website/seq_processing/SC3000.py"
+    functions:
+      - read_image_data_from_file
+      - save_image
+      - gen_images_from_seq
+
+  - page: "task/routes.md"
+    source: "website/task/routes.py"
+    functions:
+      - manage_tasks
+      - cancel_task
+      - create_task
+      - check_task_details
+      - change_task_status
+      - change_file_status
+      - remove_task
+  - page: "task/utils.md"
+    source: "website/task/utils.py"
+    functions:
+      - check_extension
+      - add_new_files
+      - add_default_label
+      - get_items_names
+      - process_save_dicom_file
+      - process_save_video_file
+      - process_save_seq_file
+      - make_directories
+      - remove_directory
+      - remove_db_task_data
+
+  - page: "user/routes.md"
+    source: "website/user/routes.py"
+    functions:
+      - user_main
+      - profile
+      - tasks
+      - task_files
+      - display_user_profile
+  - page: "user/utils.md"
+    source: "website/user/utils.py"
+    functions:
+      - get_uploads_id
+      - change_files_status

@@ -1,0 +1,29 @@
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4 toggle-brand custom-nav-text">
+        <h5 class="text-white h5">Medical image labeling software for machine learning</h5>
+        <span><a href="{{ url_for('main.about') }}" class="text-muted">About</a></span>
+    </div>
+</div>
+<nav class="navbar sticky-top navbar-dark bg-dark" id="main-navbar">
+    <div class="container-fluid">
+        <a href="{{ url_for('user.user_main', username=current_user.username) }}">
+            <h5 class="text-white brand-heading h5">ELMEDILAB</h5>
+        </a>
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-sm help-btn mr-0" type="button">
+                <span class="text-muted"><a href="{{ url_for('main.help') }}" class="custom-nav-text">Help</a></span>
+            </button>
+            <button class="btn btn-secondary dropdown-toggle btn-sm user-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                <a href="#"><span class="custom-nav-text">{{ current_user.username }}</span></a>
+            </button>
+            <ul class="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{{ url_for('user.user_main', username=current_user.username) }}">USER PANEL</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="{{ url_for('user.profile', username=current_user.username) }}">USER PROFILE</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('user.tasks', username=current_user.username, mode='closed') }}">SEARCH TASKS</a></li>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">LOG OUT</a>
+            </ul>
+          </div>
+    </div>
+</nav>

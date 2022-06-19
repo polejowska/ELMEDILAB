@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='styles/about-style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+<header>
+    {% include 'includes/_navbar-user.html' %}
+</header>
+<div class="container">
+    <div class="mt-5 p-5 border border-warning">
+        <h5>[404 Not Found] The requested page was not found.</h5>
+        <p>This page does not exist. Please redirect to a different url.</p>
+    </div>
+</div>
+{% endblock %}

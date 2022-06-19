@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div id="main-row" class="container">
+            <div class="card card-task bg-body mt-5 mx-5 p-3">
+                <h6 class="card-title card-title-task px-2">ANNOTATION #{{ annotation.id }} INFORMATION</h6>
+                <br>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">TASK ID:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">
+                            <a href="{{ url_for('user.task_files', username=current_user.username, task_id=annotation.task_id) }}">
+                            {{ annotation.task_id }}
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">FILENAME:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.filename }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">NAME:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.name }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">CREATOR:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">
+                            <a href="{{ url_for('user.display_user_profile', username=annotation.creator) }}">{{ annotation.creator }}</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">POSE:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.pose }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">TRUNCATED:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.truncated }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">DIFFICULT:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.difficult }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">OCCLUDED:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.occluded }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">BOUNDING BOX COORDINATE - X MAX:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.x_max }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">BOUNDING BOX COORDINATE - Y MAX:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.y_max }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">BOUNDING BOX COORDINATE - X MIN:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.x_min }}</span>
+                    </div>
+                </div>
+                <div class="row px-2">
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">BOUNDING BOX COORDINATE - Y MIN:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-sm-start fw-lighter fs-6">{{ annotation.y_min }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

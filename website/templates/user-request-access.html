@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link href="{{ url_for('static', filename='styles/login-style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='styles/user-profile-style.css') }}" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='img/favicon.ico') }}"/>
+        <title>ELMEDILAB</title>
+    </head>
+    <body>
+        <section class="Form my-4 mx-5">
+            <div class="container">
+                <div class="row">
+                    <h1 class="brand-heading mt-4 mb-2">ELMEDILAB</h1>
+                    <p class="description-text">Medical image labeling software for machine learning</p>
+                    <h5 class="mt-1 mb-2">Send a request in order to create an account</h5>
+                    {% include 'includes/_messages.html' %}
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="py-2">
+                                    <div class="row">
+                                        <p><i>Required</i></p>
+                                        <div class="col-md-12">
+                                            {% if form.username.errors %}
+                                                {{ form.username(class="form-control custom-form-control mb-2 p-2 is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.username.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.username(class="form-control custom-form-control mb-2 p-2") }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {% if form.password.errors %}
+                                                {{ form.password(class="form-control custom-form-control mb-2 p-2 is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.password.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.password(class="form-control custom-form-control mb-2 p-2") }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {% if form.confirm_password.errors %}
+                                                {{ form.confirm_password(class="form-control custom-form-control mb-2 p-2 is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.confirm_password.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.confirm_password(class="form-control custom-form-control mb-2 p-2") }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {% if form.email.errors %}
+                                                {{ form.email(class="form-control custom-form-control mb-2 p-2 is-invalid") }}
+                                                <div class="invalid-feedback">
+                                                    {% for error in form.email.errors %}
+                                                        <span>{{ error }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                {{ form.email(class="form-control custom-form-control mb-2 p-2") }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="py-2">
+                                    <div class="row">
+                                        <p><i>Optional</i></p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{ form.country(class="form-control custom-form-control mb-2 p-2") }}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {{ form.education(class="form-control custom-form-control mb-2 p-2") }}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {{ form.profession(class="form-control custom-form-control mb-2 p-2") }}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {{ form.additional_details(class="form-control custom-form-control mb-2 p-2") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                {{ form.submit(class="login-button mt-4 mb-5") }}
+                            </div>
+                        </div>
+                        <div class="my-1">
+                            <p>Do you already have an account? <a href="{{ url_for('auth.index') }}">Please log in here.</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>

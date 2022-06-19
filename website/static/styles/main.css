@@ -1,0 +1,448 @@
+/* Overall website style */
+
+a, a:link, a:visited
+{
+    text-decoration: none;
+}
+
+
+img 
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Navbar style */
+
+#main-navbar
+{
+    height: auto;
+    width: 100%;
+    padding: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    background-color: black!important;
+    -webkit-box-shadow: 0px 4px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0 4px 7.5px rgba(0, 0, 0, 0.4);  
+}
+
+.brand-heading
+{
+    margin-left: 10px;
+    letter-spacing: 7px;
+}
+
+.brand-heading:hover
+{
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.651);
+}
+
+.custom-nav-text
+{
+    letter-spacing: 2px;
+    color: whitesmoke;
+}
+
+.custom-nav-text:hover, .custom-nav-text:active
+{
+    color: white;
+}
+
+.toggle-brand
+{
+    background-color: black!important;
+}
+
+.user-btn, .help-btn
+{
+    background-color: black;
+    color: white;
+    letter-spacing: 1px;
+    border-radius: 0px;
+}
+
+.user-btn 
+{
+    margin-right: 45px;
+}
+
+.user-btn:hover, .user-btn:active, .help-btn:hover, .help-btn:active
+{
+    background-color: black;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.651);
+}
+
+.custom-dropdown
+{
+    padding-right: 0px;
+    border-radius: 0px;
+    background-color: black;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.custom-dropdown li a, .custom-dropdown a
+{
+    font-size: small;
+    color: white;
+    background-color: black;
+}
+
+.dropdown-divider
+{
+    background-color: silver;
+}
+
+#main-row
+{
+    height: 100%;
+}
+
+/* Tools section style */
+
+#tools-div
+{
+    height: auto;
+
+}
+
+.custom-tools-btn
+{
+    font-size: small;
+    letter-spacing: 1px;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    position: flex;
+    outline: none;
+    -webkit-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5.5px rgba(0,0,0,0.65);
+}
+
+.custom-tools-btn-bbox
+{
+    font-size: small;
+    letter-spacing: 1px;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.904);
+    position: flex;
+    -webkit-box-shadow: 0px 17px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 17px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 15px 5.5px rgba(0,0,0,0.65);
+}
+
+.custom-tools-btn-bbox:active, .custom-tools-btn-bbox:active:focus, .custom-tools-btn:active
+{
+    background-color: rgba(0, 0, 0, 0.801);
+    margin-left:2px!important;
+    -webkit-box-shadow: 0px 17px 17.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 17px 17.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 15px 15.5px rgba(0,0,0,0.65);
+}
+
+.custom-select
+{
+    background-color: black;
+    color: white;
+    border-radius: 0px;
+    border-color: black;
+    -webkit-box-shadow: 0px 17px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 17px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 15px 5.5px rgba(0,0,0,0.65);
+}
+
+/* Canvas section style */
+
+.main-canvas
+{
+    width: 100%;
+    height: 80%; 
+    margin: 0;
+    padding: 0;
+    cursor: crosshair;
+}
+
+.div-canvas
+{
+    -webkit-box-shadow: 1px 3px 17px 1px #000000; 
+    box-shadow: 1px 3px 17px 1px #000000;  
+}
+
+/* Image uploader */
+
+.custom-row-uploader
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0px;
+}
+
+.custom-col-uploader
+{  
+    border-radius: 0px;
+}
+
+.custom-input-uploader
+{
+    border-radius: 0px;
+}
+
+.custom-input-uploader
+{
+    box-shadow: none;
+}
+
+.custom-input-uploader:focus, .custom-input-uploader:active
+{
+    outline: none;
+}
+
+.custom-control-button
+{
+    border-radius: 0px;
+    width: auto;
+    font-size: small;
+    color: black;
+}
+
+.custom-alert-success
+{
+    font-size: small;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+/* Labels section style */
+
+#main-labels
+{
+    height:100%;
+    overflow-x: hidden;
+}
+
+.label-text
+{
+    font-size: small;
+    cursor: pointer;
+}
+
+.custom-labels-btn 
+{
+    font-size: small;
+    letter-spacing: 1px;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    -webkit-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5.5px rgba(0,0,0,0.65); 
+}
+
+.custom-labels-btn:hover 
+{
+    background-color: white;
+    color: black;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.custom-labels-header 
+{
+    font-size: small;
+    color: white;
+    letter-spacing: 1px;
+    background-color: black;
+    -webkit-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5.5px rgba(0,0,0,0.65); 
+}
+
+.config-group-flush
+{
+    max-height: 575px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+
+.list-group-flush
+{
+    max-height: 300px;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.custom-list-button 
+{
+    border-radius: 0px;
+    width: auto;
+    font-size: x-small;
+    background-color: white;
+}
+
+.custom-li-label
+{
+    background-color: black;
+}
+
+.custom-row-pre-label
+{
+    border: 1px solid black;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus 
+{
+    z-index: 2;
+    color: #ffffff;
+    background-color: black;
+    border-color: black;
+}
+
+.btn-label-submit
+{
+    background-color: black;
+    letter-spacing: 2px;
+}
+
+.btn-label-submit:focus
+{
+    outline: none!important;
+    box-shadow: none!important;
+}
+
+/* Admin */
+.btn-approve:hover
+{
+    background-color: green;
+}
+
+.btn-deny:hover
+{
+    background-color: red;
+}
+
+.btn-upload
+{
+    border-radius: 0%;
+}
+
+.card-title-admin-panel, .card-title-task
+{
+    letter-spacing: 3px;
+}
+
+.card-admin-panel
+{
+    color: black;
+    border-radius: 0%;
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-admin-panel:hover
+{
+    box-shadow: rgba(0, 0, 0, 0.514) 0px 5px 9px;
+}
+
+.card-task
+{
+    color: black;
+    border-radius: 0%;
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-dark
+{
+    color: white;
+    background-color: black!important;
+}
+
+.card-task:hover
+{
+    box-shadow: rgba(0, 0, 0, 0.514) 0px 5px 9px;
+}
+
+.card-task-inactive
+{
+    color: rgba(63, 63, 63, 0.623);
+    background-color: #f6f6f6c7;
+    border-radius: 0%;
+    box-shadow: rgba(0, 0, 0, 0.11) 0px 2px 5px;
+}
+
+.card-create-task
+{
+    background-color: black;
+    border-color: black;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.589) 0px 6px 8px;
+}
+
+.card-create-task:hover
+{
+    box-shadow: rgba(0, 0, 0, 0.589) 0px 12px 12px;
+}
+
+.btn-create, .btn-create:focus
+{
+    border-radius: 0%;
+    color: white;
+    background-color: black;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    -webkit-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 7px 7.5px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5.5px rgba(0,0,0,0.65); 
+}
+
+.btn-create:hover, .btn-create:active
+{
+    outline: none;
+    background-color: white;
+    color: black;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.btn-download
+{
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    -webkit-box-shadow: 0px 6px 6px -2px rgba(240, 240, 240, 1);
+    -moz-box-shadow: 0px 6px 6px -2px rgba(240, 240, 240, 1);
+    box-shadow: 0px 6px 6px -2px rgba(240, 240, 240, 1);
+}
+
+.btn-download:hover
+{
+    background-color: rgb(37, 40, 43);
+    border: 1px solid white;
+    color: rgb(247, 247, 247);
+    -webkit-box-shadow: 0px 10px 87px -2px rgba(240, 240, 240, 1);
+    -moz-box-shadow: 0px 10px 87px -2px rgba(240, 240, 240, 1);
+    box-shadow: 0px 10px 87px -2px rgba(240, 240, 240, 1);
+}
+
+.annotation-info
+{
+    padding: 2px;
+    border: 1px solid rgba(2, 2, 2, 0.651);
+}
+
+.annotation-info:hover
+{
+    padding: 2px;
+    border: 1px solid rgba(2, 2, 2, 0.651);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+}
+
+.form-label-custom
+{
+    font-size: small;
+    font-style: italic;
+}

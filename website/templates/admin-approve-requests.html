@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div class="m-5">
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"><small>ID</small></th>
+                        <th scope="col"><small>USERNAME</small></th>
+                        <th scope="col"><small>EMAIL</small></th>
+                        <th scope="col"><small>DATE REQUESTED</small></th>
+                        <th scope="col"><small>ACCESS</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                        {% if not request.approved %}    
+                        <tr>
+                            <th scope="row"><small>{{ request.id }}</small></th>
+                            <td><small>{{ request.username }}</small></td>
+                            <td><small>{{ request.email }}</small></td>
+                            <td><small>{{ request.date_requested }}</small></td>
+                            <td>
+                                <a href="{{ url_for('admin.add_user', request_id=request.id) }}">
+                                    <button class="btn btn-outline-dark btn-sm custom-control-button btn-approve" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Create a new user">APPROVE</button>
+                                </a>          
+                                <a href="{{ url_for('admin.remove_request', request_id=request.id) }}">
+                                    <button class="btn btn-outline-dark btn-sm custom-control-button btn-deny mx-2" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Reject this request">DENY</button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-light" role="alert">{{ message }}</div>
+                    {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

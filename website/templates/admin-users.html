@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div class="m-5">
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"><small>ID</small></th>
+                        <th scope="col"><small>USERNAME</small></th>
+                        <th scope="col"><small>EMAIL</small></th>
+                        <th scope="col"><small>DATE ADDED</small></th>
+                        <th scope="col"><small>ACCESS</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %} 
+                        <tr>
+                            <th scope="row"><small>{{ user.id }}</small></th>
+                            <td>
+                                <a href="{{ url_for('user.display_user_profile', username=user.username) }}" target="_blank">
+                                    <small>{{ user.username }}</small>
+                                </a>
+                            </td>
+                            <td><small>{{ user.email }}</small></td>
+                            <td><small>{{ user.date_added }}</small></td>
+                            <td>
+                                {% if user.access == 2 %}
+                                    <small>PERMANENT ACCESS</small>
+                                {% else %}
+                                    <a href="{{ url_for('admin.remove_user', user_id=user.id) }}">
+                                        <button class="btn btn-outline-dark btn-sm custom-control-button btn-deny" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Remove this user account">REMOVE</button>
+                                    </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-light" role="alert">{{ message }}</div>
+                    {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

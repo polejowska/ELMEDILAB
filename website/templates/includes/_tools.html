@@ -1,0 +1,41 @@
+<div id="tools-div" class="col-md-1 text-center my-4 pl-2 pr-2">
+    <hr>
+    <div class="row mt-4">
+        <button id="zoom" onclick="zoomAndDragMode()" type="submit" class="btn btn-block btn-dark p-1 px-2 m-1 rounded-0 custom-tools-btn" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Enable zooming and dragging the image across the canvas">
+            Zoom and drag enable
+        </button>
+    </div>
+    <div class="row mb-4">
+        <div class="btn btn-block btn-dark p-1 py-2 mx-1 mt-3 mb-0 rounded-0 custom-tools-btn-bbox" onclick="enableLabelMode()" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Enable creating a new annotation on the canvas">
+            Bbox
+        </div>
+            <div class="p-1 mx-1 mt-2 mb-1 rounded-0 custom-tools-btn" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Change the color of the bounding box"> 
+                <select onchange="resetColor()" id="color-select" class="form-select form-select-sm label-text custom-select" aria-label=".form-select-sm">
+                    <option class="custom-color-option" value='#000000'>Black</option>
+                    <option class="custom-color-option" value='#FFFFFF'>White</option>
+                    <option class="custom-color-option" value='#4876FF'>Blue</option>
+                    <option class="custom-color-option" value='#B0171F'>Red</option>
+                    <option class="custom-color-option" value='#FFFF00'>Yellow</option>
+                </select>
+            </div>
+            <div class="p-1 mx-1 mb-1 rounded-0 custom-tools-btn" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Change the line width of the bounding box"> 
+                <select onchange="resetLineWidth()" id="line-width-select" class="form-select form-select-sm label-text custom-select" aria-label=".form-select-sm">
+                    <option class="custom-option" value='1'>Line width: 1</option>
+                    <option class="custom-option" value='2'>Line width: 2</option>
+                    <option class="custom-option" value='3'>Line width: 3</option>
+                    <option class="custom-option" value='4'>Line width: 4</option>
+                </select>
+            </div>
+    </div>
+    <div class="row mt-4">
+        <button id="btn_coordinates" onclick="showCursorCoordinates()" type="submit" class="btn btn-block btn-dark p-1 px-2 m-1 rounded-0 custom-tools-btn" tardata-bs-toggle="tooltip" data-bs-placement="right" title="Hide displaying coordinates below">
+            Hide cursor coordinates
+        </button>
+    </div>
+    <div id="coordinates" class="justify-content-evenly text-center">
+        <table id="img_data" class="table table-sm table-borderless align-middle">
+        </table>
+    </div>
+    <hr>
+</div>
+

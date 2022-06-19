@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% include 'includes/_navbar-admin.html' %}
+    </header>
+    <main>
+        <div id="main-row" class="container">
+            <div class="card card-task bg-body mt-5 mx-5 p-3">
+                <h5 class="card-title card-title-task px-2">EXPORT LABELS</h5>
+                <hr>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="row mt-4 px-3">
+                        <div class="col-md-3">
+                            <span><small>OUTPUT FORMAT:</small></span>
+                        </div>
+                        <div class="col-md-9 pr-4">
+                            {{ form.output_format(class="form-select form-select-sm rounded-0") }}
+                        </div>
+                    </div>
+                    <div class="row mt-4 px-3">
+                        <div class="col-md-3">
+                            <span><small>TASK ID:</small></span>
+                        </div>
+                        <div class="col-md-9 pr-4">
+                            <input name="task_id" type="text" list="tasks" class="form-select form-select-sm rounded-0" required/>
+                            <datalist id="tasks" class="rounded-0">
+                                {% for task in tasks %}
+                                    <option><small>{{ task.id }}</small></option>
+                                {% endfor %}
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3 px-4">
+                        {{ form.export(class="btn btn-create mt-5 px-5 py-1") }}
+                    </div>
+                </form>
+                {% include 'includes/_messages.html' %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}

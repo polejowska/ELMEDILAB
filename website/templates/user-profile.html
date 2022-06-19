@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='styles/login-style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='styles/user-profile-style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <div class="container bg-white my-2">
+        <div class="row mt-5 p-3 py-2">
+            <div class="d-flex text-user-profile mb-3">
+                <h4 class="text-right">User profile</h4>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                    <div class="row p-3 py-3">
+                        <div class="row">
+                            <div class="col-md-4"><label class="labels">User ID</label><input type="text" class="form-control custom-form-control" placeholder="User ID" value="{{ current_user.id }}" disabled></div>
+                            <div class="col-md-8">
+                                {{ form.username.label(class="labels") }}
+                                {% if form.username.errors %}
+                                    {{ form.username(class="form-control custom-form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.username.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.username(class="form-control custom-form-control") }}
+                                {% endif %}                        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.email.label(class="labels") }}
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control custom-form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control custom-form-control") }}
+                                {% endif %}                        
+                            </div>                     
+                            <div class="col-md-6">
+                                {{ form.country.label(class="labels") }}
+                                {% if form.country.errors %}
+                                    {{ form.country(class="form-control custom-form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.country.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.country(class="form-control custom-form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.education.label(class="labels") }}
+                                {% if form.education.errors %}
+                                    {{ form.education(class="form-control custom-form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.education.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.education(class="form-control custom-form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.profession.label(class="labels") }}
+                                {% if form.profession.errors %}
+                                    {{ form.profession(class="form-control custom-form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.profession.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.profession(class="form-control custom-form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-12">
+                                {{ form.additional_details.label(class="labels") }}
+                                {% if form.additional_details.errors %}
+                                    {{ form.additional_detailsn(class="form-control custom-form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.additional_details.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.additional_details(class="form-control custom-form-control") }}
+                                {% endif %}
+                            </div>
+                            <div class="mt-5 mb-5 p-2 text-center">
+                                {{ form.submit(class="btn profile-button mt-2") }}
+                            </div>
+                            <hr>
+                            <div class="col-md-12 mt-3">
+                                {% include 'includes/_messages.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

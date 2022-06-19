@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <header>
+        {% if current_user.access == 2 %}
+            {% include 'includes/_navbar-admin.html' %}
+        {% else %}
+            {% include 'includes/_navbar-user.html' %}
+        {% endif %}
+    </header>
+    <main>
+        <div class="row">
+            {% include 'includes/_tools.html' %}
+            {% include 'includes/_canvas.html' %}
+            {% include 'includes/_labels.html' %}
+        </div>  
+    </main>
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}
+
